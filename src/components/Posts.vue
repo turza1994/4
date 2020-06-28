@@ -5,6 +5,7 @@
             <p> <span id="category">category:</span>  {{post.category}} </p>
             <p> {{post.body}} </p>
             <button type="button" class="btn btn-primary" @click="onClickEdit(post.id, post.title, post.body)" >Edit post</button>
+            <button type="button" class="btn btn-danger" @click="onClickDelete(post.id)" >Delete post</button>
             <!-- <UpdateForm /> -->
             <hr>
         </div>
@@ -27,7 +28,7 @@ export default {
     computed: mapGetters(['posts']),
 
     methods: {
-        ...mapActions(['fetchPosts', 'updatePost']),
+        ...mapActions(['fetchPosts', 'updatePost', 'deletePost']),
 
         show () {
             this.$modal.show('hello-world');
@@ -47,6 +48,10 @@ export default {
             this.updatePost(post)
             this.$modal.show('UpdateForm');
             
+        },
+
+        onClickDelete(id){
+            this.deletePost(id);
         }
     }
 }

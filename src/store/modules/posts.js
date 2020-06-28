@@ -50,6 +50,10 @@ const actions = {
     async setPost({commit}, post){
         console.log(post)
         commit('setPost', post)
+    },
+
+    deletePost({commit}, id){
+        commit('deletePost', id)
     }
 
     // async fetchPosts({ commit }){
@@ -83,7 +87,9 @@ const mutations = {
         //         console.log(state.allPosts[i], post)
         //     }
         // }
-    }
+    },
+
+    deletePost: (state, id) => {state.allPosts=state.allPosts.filter(cv => cv.id != id)}
     // setFetchPosts: (state, posts) => {state.allPosts=posts}
 };
 
