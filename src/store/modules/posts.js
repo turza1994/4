@@ -80,13 +80,6 @@ const mutations = {
                 console.log(state.allPosts[i], post)
             }
         })
-        // for(let i=0; i<state.allPosts.length; i++){
-        //     if(state.allPosts.id == post.id){
-        //         state.allPosts[i].title = post.title;
-        //         state.allPosts[i].body = post.body;
-        //         console.log(state.allPosts[i], post)
-        //     }
-        // }
     },
 
     deletePost: (state, id) => {state.allPosts=state.allPosts.filter(cv => cv.id != id)}

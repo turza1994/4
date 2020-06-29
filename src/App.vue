@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <Header />
     </div>
     <router-view/>
     <ModalForm />
@@ -11,12 +10,14 @@
 </template>
 
 <script>
+  import Header from '@/components/partial/Header'
   import ModalForm from './components/ModalForm'
   import UpdateForm from './components/UpdateForm'
   
   export default{
     name: 'App',
     components:{
+      Header,
       ModalForm,
       UpdateForm
     }
@@ -31,6 +32,9 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
 
+  #app{
+    margin-top: 8vh;
+  }
 /* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
