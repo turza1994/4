@@ -5,29 +5,29 @@
             <i class="pencil alternate icon"></i>
             Do you want to write new post ?
         </div>
-        <!-- <InputForm /> -->
-        <button type="button" class="btn btn-primary" id="add" @click="show" >Write post</button>
+        <InputForm v-bind:class="{modalButton : isAddButton}" submitButton="Create" modalButton="Create Post" edit_id='' edit_body='' />
+        <!-- <button type="button" class="btn btn-primary" id="add" @click="show" >Write post</button> -->
     </div>
   </div>
 </template>
 
 <script>
-// import InputForm from './InputForm'
+import InputForm from './InputForm'
 export default {
     name: 'AddPost',
+
     components:{
-        // InputForm
+        InputForm
+    },
+
+    data(){
+        return{
+            isAddButton: true
+        }
     },
 
     methods: {
 
-        show () {
-            this.$modal.show('hello-world');
-        },
-
-        hide () {
-            this.$modal.hide('hello-world');
-        }
     }
 }
 </script>
@@ -43,5 +43,10 @@ export default {
         width: 10vw;
         margin: 0 auto;
     }
+
+    .modalButton{
+        margin: 0 auto;
+        width: 26vw;
+   }
 
 </style>

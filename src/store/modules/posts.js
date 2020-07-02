@@ -18,19 +18,13 @@ const state = {
         body: "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla",
         category: 'unknown'
       }
-    ],
+    ]
 
-    post: {
-        id: '',
-        title: '',
-        body: '',
-        category: ''
-    }
 };
 
 const getters = {
     posts: (state) => state.allPosts,
-    post: (state) => state.post
+    // post: (state) => state.post
 };
 
 const actions = {
@@ -44,35 +38,20 @@ const actions = {
     },
 
     updatePost({commit}, post){
-        commit('updatePost', post);
-    },
-
-    async setPost({commit}, post){
+        post.category = 'unknown'
         console.log(post)
-        commit('setPost', post)
+        commit('updatePost', post);
     },
 
     deletePost({commit}, id){
         commit('deletePost', id)
     }
-
-    // async fetchPosts({ commit }){
-    //     const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
-    //     commit('setFetchPosts', res.data);
-    // }
 };
 
 const mutations = {
     addPost: (state, post)=>{state.allPosts.unshift(post)},
 
     updatePost: (state, post) => {
-        state.post.id = post.id;
-        state.post.title = post.title;
-        state.post.body = post.body;
-        state.post.category = post.category;
-    },
-
-    setPost: (state,post) => {
         state.allPosts.map((cv, i) => {
             if(cv.id == post.id){
                 state.allPosts[i] = post;
@@ -83,7 +62,7 @@ const mutations = {
     },
 
     deletePost: (state, id) => {state.allPosts=state.allPosts.filter(cv => cv.id != id)}
-    // setFetchPosts: (state, posts) => {state.allPosts=posts}
+
 };
 
 export default {

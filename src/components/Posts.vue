@@ -4,9 +4,8 @@
             <h3>{{post.title}}</h3>
             <p> <span id="category">category:</span>  {{post.category}} </p>
             <p> {{post.body}} </p>
-            <button type="button" class="btn btn-primary" @click="onClickEdit(post.id, post.title, post.body)" >Edit post</button>
+            <InputForm submitButton="Update" modalButton="Update post" v-bind:edit_id = "post.id" v-bind:edit_title = "post.title" v-bind:edit_body= "post.body" />
             <button type="button" class="btn btn-danger" @click="onClickDelete(post.id)" >Delete post</button>
-            <!-- <UpdateForm /> -->
             <hr>
         </div>
     </div>
@@ -15,40 +14,20 @@
 </template>
 
 <script>
-// import UpdateForm from './UpdateForm'
+import InputForm from './InputForm'
 import {mapGetters, mapActions} from 'vuex';
 
 export default {
     name: 'Posts',
 
     components: {
-        // UpdateForm
+        InputForm
     },
 
     computed: mapGetters(['posts']),
 
     methods: {
         ...mapActions(['fetchPosts', 'updatePost', 'deletePost']),
-
-        show () {
-            this.$modal.show('hello-world');
-        },
-
-        hide () {
-            this.$modal.hide('hello-world');
-        },
-        
-        onClickEdit(id, title, body){
-            const post = {
-                id,
-                title,
-                body,
-                category: 'unknown'
-            }
-            this.updatePost(post)
-            this.$modal.show('UpdateForm');
-            
-        },
 
         onClickDelete(id){
             this.deletePost(id);
