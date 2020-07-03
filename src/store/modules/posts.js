@@ -47,13 +47,11 @@ const actions = {
     addPost({ commit }, post){
         
         post.id = uuidv4(),
-        post.category = 'unknown'
 
         commit('addPost', post);
     },
 
     updatePost({commit}, post){
-        post.category = 'unknown'
         console.log(post)
         commit('updatePost', post);
     },

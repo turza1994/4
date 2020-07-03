@@ -11,9 +11,9 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Example select</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <select class="form-control" id="exampleFormControlSelect1" v-model="category">
 
-                    <option v-for="category in categories" v-bind:key="category.id">{{category.title}}</option>
+                    <option v-for="category in categories" v-bind:key="category.id" >{{category.title}}</option>
 
                 </select>
             </div>
@@ -39,7 +39,8 @@ import {mapGetters, mapActions} from 'vuex';
       return {
         modalShow: false,
         title: this.edit_title,
-        body: this.edit_body
+        body: this.edit_body,
+        category: ''
       }
     },
 
@@ -51,9 +52,10 @@ import {mapGetters, mapActions} from 'vuex';
         onSubmit(){
           const post = {
             title: this.title,
+            category: this.category,
             body: this.body
           }
-          
+
           if(this.submitButton=='Create'){
             this.addPost(post);
             this.title = '';
