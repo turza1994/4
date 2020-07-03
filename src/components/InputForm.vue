@@ -9,14 +9,15 @@
                 <label for="title">Title:</label>
                 <input type="text" class="form-control" id="title" v-model="title">
             </div>
+
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Example select</label>
                 <select class="form-control" id="exampleFormControlSelect1" v-model="category">
-
                     <option v-for="category in categories" v-bind:key="category.id" >{{category.title}}</option>
-
                 </select>
+                <CategoryForm class="categoryOnFly" submitButton="Create" modalButton="Add a new Category" />
             </div>
+
             <div class="form-group">
                 <label for="body">Description:</label>
                 <br/>
@@ -29,10 +30,15 @@
 </template>
 
 <script>
+import CategoryForm from './CategoryForm'
 import {mapGetters, mapActions} from 'vuex';
   export default {
     name: 'InputForm', 
     
+    components:{
+      CategoryForm
+    },
+
     props: ['submitButton', 'modalButton', 'edit_id', 'edit_title', 'edit_body'],
 
     data() {
@@ -40,7 +46,8 @@ import {mapGetters, mapActions} from 'vuex';
         modalShow: false,
         title: this.edit_title,
         body: this.edit_body,
-        category: ''
+        category: '',
+
       }
     },
 
@@ -82,6 +89,10 @@ import {mapGetters, mapActions} from 'vuex';
     background: rgb(35, 115, 236);
     color: white;
     margin-bottom: 1vw;
+  }
+
+  .categoryOnFly{
+    
   }
 
 </style>
