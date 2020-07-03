@@ -12,11 +12,9 @@
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Example select</label>
                 <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+
+                    <option v-for="category in categories" v-bind:key="category.id">{{category.title}}</option>
+
                 </select>
             </div>
             <div class="form-group">
@@ -31,7 +29,7 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex';
+import {mapGetters, mapActions} from 'vuex';
   export default {
     name: 'InputForm', 
     
@@ -44,6 +42,8 @@ import {mapActions} from 'vuex';
         body: this.edit_body
       }
     },
+
+    computed: mapGetters(['categories']),
 
     methods: {
         ...mapActions(['addPost', 'updatePost']),
