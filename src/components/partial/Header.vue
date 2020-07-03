@@ -2,7 +2,7 @@
   <div class="Header">
     <nav class="navbar fixed-top navbar-expand-xl" id="navigation-bar">
       <router-link class="navbar-brand" to="/">Posts</router-link>
-       <router-link class="navbar-brand" to="/categories">Categories</router-link> |
+       <router-link class="navbar-brand" to="/category">Categories</router-link> |
       <router-link class="navbar-brand" to="/about">About</router-link>
     </nav>
   </div>

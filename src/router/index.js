@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Categories from '../views/Categories.vue'
+import Category from '../views/Category.vue'
 
 Vue.use(VueRouter)
 
@@ -13,9 +13,9 @@ Vue.use(VueRouter)
   },
 
   {
-    path: '/categories',
-    name: 'Categories',
-    component: Categories
+    path: '/category',
+    name: 'Category',
+    component: Category
   },
 
   {

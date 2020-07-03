@@ -18,13 +18,28 @@ const state = {
         body: "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla",
         category: 'unknown'
       }
+    ],
+
+    categories: [
+        {
+            id: 3,
+            title: 'hello'
+        },
+        {
+            id: 4,
+            title: 'hi'
+        },
+        {
+            id: 5,
+            title: 'welcome'
+        }
     ]
 
 };
 
 const getters = {
     posts: (state) => state.allPosts,
-    // post: (state) => state.post
+    categories: (state) => state.categories
 };
 
 const actions = {
@@ -45,6 +60,13 @@ const actions = {
 
     deletePost({commit}, id){
         commit('deletePost', id)
+    },
+
+    addCategory({ commit }, category){
+        
+        category.id = uuidv4(),
+
+        commit('addCategory', category);
     }
 };
 
@@ -61,7 +83,9 @@ const mutations = {
         })
     },
 
-    deletePost: (state, id) => {state.allPosts=state.allPosts.filter(cv => cv.id != id)}
+    deletePost: (state, id) => {state.allPosts=state.allPosts.filter(cv => cv.id != id)},
+    
+    addCategory: (state, category)=>{state.categories.unshift(category)},
 
 };
 
